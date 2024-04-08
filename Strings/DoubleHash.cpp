@@ -24,7 +24,7 @@ void InitHash(ll &n, string &s){
 	for(int th = 0; th < MXH; th ++){
 		H[th][0] = 0;
 		for(int i = 1; i <= n; i ++){
-			H[th][i] = H[th][i - 1] * BASE + (s[i] - 'a' + 1);
+			H[th][i] = H[th][i - 1] * BASE % Mod[th] + (s[i] - 'a' + 1);
 			mkay(th, H[th][i]);
 		}
 	}
