@@ -29,12 +29,14 @@ void InitHash(ll &n, string &s){
 		}
 	}
 }
+inline ll Hash(int th, ll l, ll r){
+	return (H[th][r] - H[th][l - 1] * pw[th][r - l + 1] % Mod[th] + Mod[th]) % Mod[th];
+}
 
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);	
 	ll n = 5; string s = "$ninia";
 	InitPow(), InitHash(n, s);
-
 
 
 	return 0;
