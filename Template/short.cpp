@@ -5,7 +5,7 @@ using namespace std;
 typedef long long ll;
 const ll MXN = 2e5 + 10;
 
-int main(){
+int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
 	
 
