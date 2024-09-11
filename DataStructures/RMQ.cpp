@@ -25,7 +25,7 @@ inline int Max(int l, int r){
 }
 inline void InitLog(){
 	for(int i = 0; (1LL << i) < MXN; i ++) lg[(1LL << i)] = i;
-    for(int i = 1; i < MXN; i ++)          lg[i] = max(lg[i - 1], lg[i]);
+	for(int i = 1; i < MXN; i ++)          lg[i] = max(lg[i - 1], lg[i]);
 }
 
 int main(){
