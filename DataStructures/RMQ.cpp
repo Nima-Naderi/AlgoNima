@@ -4,6 +4,7 @@ using namespace std;
 
 typedef long long ll;
 const ll MXN = 2e5 + 10;
+const ll LOG = 20;
 ll n;
 ll A[MXN];
 
