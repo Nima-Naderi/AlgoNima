@@ -3,7 +3,7 @@
 using namespace std;
 
 typedef long long ll;
-const ll MXN = 2e5 + 10;
+const ll MXN = 3e5 + 10;
 
 void solve(){
 
