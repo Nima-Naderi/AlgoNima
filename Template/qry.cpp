@@ -1,5 +1,6 @@
 // #pragma GCC optimize("O2")
 #include <bits/stdc++.h>
+#define Mp make_pair
 using namespace std;
 
 typedef long long ll;
