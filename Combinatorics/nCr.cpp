@@ -12,6 +12,7 @@ ll inv(ll x){
 	return power(x, Mod - 2);
 }
 void mkay(ll &x){
+	if(x < 0) x += Mod;
 	if(x >= Mod) x -= Mod;
 }
 ll F[MXN], I[MXN];
@@ -25,7 +26,13 @@ inline void Init(){
 	I[MXN - 1] = inv(F[MXN - 1]);
 	for(int i = MXN - 2; i; -- i) I[i] = I[i + 1] * (i + 1) % Mod;
 }
-
+ll NcR(ll n, ll r){ //Iterative version
+	if(r < 0 || r > n) return 0;
+	ll ans = 1;
+	for(ll i = n; i > n - r; -- i) ans = ans * i % Mod;
+	for(ll i = 2; i <= r; i ++) ans = ans * inv(i) % Mod;
+	return ans;
+}
 
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
