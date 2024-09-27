@@ -4,6 +4,7 @@
 using namespace std;
 
 typedef long long ll;
+typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
 
 void solve(){
@@ -17,4 +18,10 @@ int32_t main(){
 	while(tq --) solve();
 	return 0;
 }
+/*!
+	HE'S AN INSTIGATOR,
+	ENEMY ELIMINATOR,
+	AND WHEN HE KNOCKS YOU BETTER
+	YOU BETTER LET HIM IN.
+ */
 //! N.N
