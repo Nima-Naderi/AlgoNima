@@ -13,10 +13,4 @@ int32_t main(){
 
 	return 0;
 }
-/*!
-	HE'S AN INSTIGATOR,
-	ENEMY ELIMINATOR,
-	AND WHEN HE KNOCKS YOU BETTER
-	YOU BETTER LET HIM IN.
- */
 //! N.N
