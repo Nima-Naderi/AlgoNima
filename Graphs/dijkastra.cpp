@@ -8,7 +8,7 @@ typedef pair<ll, ll> pll;
 const ll MXN = 2e5 + 10;
 const ll INF = 1e9 + 10;
 ll n, m;
-long long dis[MXN];
+ll dis[MXN];
 vector<pll> adj[MXN];
 priority_queue<pll, vector<pll>, greater<pll>> pq;
 bool vis[MXN];
