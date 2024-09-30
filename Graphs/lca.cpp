@@ -18,7 +18,7 @@ void prep(ll u, ll par){
 	for(auto v : adj[u]){
 		if(v == par) continue;
 		dis[v] = dis[u] + 1;
-		dfs(v, u);
+		prep(v, u);
 	}
 }
 ll K_Jad(ll u, ll k){
@@ -40,7 +40,7 @@ inline ll Distance(ll u, ll v){
 	return dis[u] + dis[v] - 2 * dis[LCA(u, v)];
 }
 void solve(){
-	cin >> n, tim = 0;
+	cin >> n;
 	for(int i = 0; i <= n; i ++) adj[i].clear();
 	for(int i = 1; i < n; i ++){
 		ll u, v; cin >> u >> v;
