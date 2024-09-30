@@ -18,7 +18,7 @@ void prep(ll u, ll par){
 	for(auto v : adj[u]){
 		if(v == par) continue;
 		dis[v] = dis[u] + 1;
-		dfs(v, u);
+		prep(v, u);
 	}
 }
 ll K_Jad(ll u, ll k){
