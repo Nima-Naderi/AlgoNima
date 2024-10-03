@@ -6,7 +6,7 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
-const ll MXK = 32;
+const ll MXK = 32; //16
 //Random number generation (64 bits is safe):
 // mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
 // mt19937 Rnd(chrono::high_resolution_clock::now().time_since_epoch().count());
@@ -45,6 +45,17 @@ valarray<u64> Get(ll p){
 
 ll n;
 valarray<u64> A[MXN];
+
+struct ValarrayComparator {
+    bool operator()(const valarray<u64>& a, const valarray<u64>& b) const {
+		assert(a.size() == MXK && b.size() == MXK);
+        for(size_t i = 0; i < MXK; ++ i){
+            if(a[i] != b[i]) return a[i] < b[i]; 
+        }
+        return false;
+    }
+};
+map<valarray<u64>, ll, ValarrayComparator> mp;
 
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);	
