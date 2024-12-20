@@ -18,7 +18,7 @@ inline ll Dijk(ll src = 0, ll sink = 0){
 		pq.push(Mp(dis[src] = 0, src));
 	} else {
 		//multi-source dijkastra
-		for(int u = 1; u <= n; u ++) pq.push(Mp(dis[u], u));
+		for(int u = 1; u <= n; u ++) pq.push(Mp(dis[u], u)), vis[u] = 0;
 	}
 	while(!pq.empty()){
 		ll u, d; tie(d, u) = pq.top(); pq.pop();
