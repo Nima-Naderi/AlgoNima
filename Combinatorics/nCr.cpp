@@ -26,6 +26,9 @@ inline void Init(){
 	I[MXN - 1] = inv(F[MXN - 1]);
 	for(int i = MXN - 2; i; -- i) I[i] = I[i + 1] * (i + 1) % Mod;
 }
+ll Catalan(ll n){ // 0..n: 1, 1, 2, 5, 14, 42
+	return (nCr(2 * n, n) - nCr(2 * n, n - 1) + Mod) % Mod;
+}
 ll NcR(ll n, ll r){ //Iterative version
 	if(r < 0 || r > n) return 0;
 	ll ans = 1;
