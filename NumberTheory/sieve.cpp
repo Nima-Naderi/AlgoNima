@@ -39,6 +39,17 @@ inline int GetPrmId(ll x){
     return lower_bound(Prm.begin(), Prm.end(), x) - Prm.begin() + 1;
 }
 
+const ll MXM = 1e7 + 10;
+ll phi[MXM];
+inline void CalcEulerPhi(){
+	for(int i = 1; i < MXM; i ++) phi[i] = i;
+	for(int i = 1; i < MXM; i ++){
+		for(int j = 1; j * i < MXM; j ++)
+			phi[j * i] -= (i != j * i ? phi[i] : 0);
+	}
+}
+// TODO: add modulo inverse using phi function
+
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);	
 	
