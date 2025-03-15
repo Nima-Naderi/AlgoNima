@@ -13,13 +13,13 @@ const ll Mod = 998244353;
 const ll INF = 8e18;
 
 // Compress
-vector<ll> vec;
+vector<ll> Num;
 inline void Compress(){
-	sort(vec.begin(), vec.end());
-	vec.resize(unique(vec.begin() , vec.end()) - vec.begin());
+	sort(Num.begin(), Num.end());
+	Num.resize(unique(Num.begin() , Num.end()) - Num.begin());
 }
 inline int GetId(int x){
-    return lower_bound(vec.begin(), vec.end(), x) - vec.begin() + 1;
+    return lower_bound(Num.begin(), Num.end(), x) - Num.begin() + 1;
 }
 
 int32_t main(){
