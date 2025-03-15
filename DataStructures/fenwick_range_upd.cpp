@@ -35,7 +35,7 @@ ll Get(int l, int r){
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
 	
-	cin >> n;
+	ll n; cin >> n;
 	fill(Fen, Fen + n + 5, 0);
 	
 	return 0;
