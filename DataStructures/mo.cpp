@@ -37,6 +37,7 @@ int main(){
         while(Ml > l) Ml --, Add(A[Ml]);
         while(Mr > r) Ers(A[Mr]), Mr --;
         while(Ml < l) Ers(A[Ml]), Ml ++;
+        //! Note that we are passing A[Mr] which is the value and not index (i)
         ANS[id] = 83;
     }
     for(int i = 1; i <= q; i ++) cout << ANS[i] << '\n';
