@@ -18,6 +18,13 @@ bool CmP(int x, int y){ //faster
      return (Ql[x] / SQR < Ql[y] / SQR);
  }
 
+void Add(ll x){}
+void Ers(ll x){}
+// or Toggle
+
+
+
+// ============== HILBERT ORDER ==============
 constexpr int LOG = 18; //minimal value that 2^LOG ≥ n
 inline int64_t HilbertOrder(int x, int y, int pow, int rotate) {
 	if (pow == 0) {
@@ -44,9 +51,27 @@ bool HilbCMP(int x, int y){
 } // much faster when q is significantly less than n
 // source: CF blog https://codeforces.com/blog/entry/61203
 
-void Add(ll x){}
-void Ers(ll x){}
-// or Toggle
+// ============== HILBERT ORDER (OPTIMIZED) ==============
+uint64_t hilbertorder(uint64_t x, uint64_t y) {
+    const uint64_t logn = __lg(max(x, y) * 2 + 1) | 1;
+    const uint64_t maxn = (1ull << logn) - 1;
+    uint64_t res = 0;
+    for (uint64_t s = 1ull << (logn - 1); s; s >>= 1) {
+        bool rx = x & s, ry = y & s;
+        res = (res << 2) | (rx ? ry ? 2 : 1 : ry ? 3 : 0);
+        if (!rx) {
+            if (ry) x ^= maxn, y ^= maxn;
+            swap(x, y);
+        }
+    }
+    return res;
+}
+bool HilbCmP(int x, int y){
+    return hilbertorder(Ql[x], Qr[x]) < hilbertorder(Ql[y], Qr[y]);
+}
+
+
+
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
     cin >> q;
