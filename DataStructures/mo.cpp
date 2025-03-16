@@ -52,7 +52,7 @@ bool HilbCMP(int x, int y){
 // source: CF blog https://codeforces.com/blog/entry/61203
 
 // ============== HILBERT ORDER (OPTIMIZED) ==============
-uint64_t hilbertorder(uint64_t x, uint64_t y) {
+uint64_t hilbertOrder(uint64_t x, uint64_t y) {
     const uint64_t logn = __lg(max(x, y) * 2 + 1) | 1;
     const uint64_t maxn = (1ull << logn) - 1;
     uint64_t res = 0;
@@ -67,10 +67,36 @@ uint64_t hilbertorder(uint64_t x, uint64_t y) {
     return res;
 }
 bool HilbCmP(int x, int y){
-    return hilbertorder(Ql[x], Qr[x]) < hilbertorder(Ql[y], Qr[y]);
+    return hilbertOrder(Ql[x], Qr[x]) < hilbertOrder(Ql[y], Qr[y]);
 }
 
-
+// ============== SIERPINSKI ORDER ==============
+const int64_t max_coord = (int64_t)(MXN);
+inline int64_t sierpinskiIndex(int64_t x, int64_t y) {
+	int64_t result = 0, oldX;
+	if(x > y){
+	    result ++;
+	    x = max_coord - x, y = max_coord - y;  
+	}
+    for(int64_t loop = max_coord; loop; loop /= 2){
+	    result += result;
+	    if(x + y > max_coord){
+	        result ++;
+	        oldX = x, x = max_coord - y, y = oldX;
+	    }
+	    x += x;
+	    y += y;
+	    result += result;
+	    if(y > max_coord){
+	        result ++;
+	        oldX = x, x = y - max_coord, y = max_coord - oldX;
+	    }
+	}
+	return result;
+}
+bool SierCMP(int x, int y){
+    return sierpinskiIndex(Ql[x], Qr[x]) < sierpinskiIndex(Ql[y], Qr[y]);
+}
 
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
