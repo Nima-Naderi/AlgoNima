@@ -23,7 +23,6 @@ void Ers(ll x){}
 // or Toggle
 
 
-
 // ============== HILBERT ORDER ==============
 constexpr int LOG = 18; //minimal value that 2^LOG ≥ n
 inline int64_t HilbertOrder(int x, int y, int pow, int rotate) {
@@ -46,7 +45,7 @@ inline int64_t HilbertOrder(int x, int y, int pow, int rotate) {
 	ans += (seg == 1 || seg == 2) ? add : (subSquareSize - add - 1);
 	return ans;
 }
-bool HilbCMP(int x, int y){
+bool HilbCMP(int x, int y){ //WARNING: Very slow usually!!!
     return HilbertOrder(Ql[x], Qr[x], LOG, 0) < HilbertOrder(Ql[y], Qr[y], LOG, 0);
 } // much faster when q is significantly less than n
 // source: CF blog https://codeforces.com/blog/entry/61203
