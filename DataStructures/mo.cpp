@@ -13,12 +13,10 @@ bool CMP(ll x, ll y){
     return (Ql[x] / SQR < Ql[y] / SQR);
 }
 bool CmP(int x, int y){ //faster
-    if(Ql[x] / SQR == Ql[y] / SQR){
-        if(Ql[x] / SQR % 2) return Qr[x] < Qr[y];
-        return Qr[y] < Qr[x];
-    }
-    return (Ql[x] / SQR < Ql[y] / SQR);
-}
+     if(Ql[x] / SQR == Ql[y] / SQR)
+        return ((Ql[x] / SQR) & 1) ^ (Qr[x] < Qr[y]);
+     return (Ql[x] / SQR < Ql[y] / SQR);
+ }
 void Add(ll x){}
 void Ers(ll x){}
 // or Toggle
