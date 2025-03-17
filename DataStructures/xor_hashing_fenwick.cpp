@@ -7,11 +7,6 @@ typedef long long ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
 const ll MXK = 32; //16
-//Random number generation (64 bits is safe):
-// mt19937_64 rng(chrono::steady_clock::now().time_since_epoch().count());
-// mt19937 Rnd(chrono::high_resolution_clock::now().time_since_epoch().count());
-// mt19937 rng(time(0));
-// srand(time(0)); srand(time(NULL));
 
 typedef unsigned long long u64;
 const valarray<u64> zero(0ull, MXK);
