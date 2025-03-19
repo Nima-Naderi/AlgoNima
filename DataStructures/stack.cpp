@@ -18,7 +18,22 @@ void solve(){
     for(int i = n; i >= 1; -- i){
         R[i] = i + 1;
         while(R[i] <= n && A[R[i]] <= A[i]) R[i] = R[R[i]];
-    }  
+    }
+
+    vector<int> stk = {0};
+    fill(L, L + n + 5, -1);
+    fill(R, R + n + 5, n + 1);
+    for(int i = 1; i <= n; i++){
+        while(!stk.empty() && A[stk.back()] <= A[i]){
+            R[stk.back()] = i;
+            stk.pop_back();
+        }
+        if(!stk.empty()){
+            L[i] = stk.back();
+        }
+        stk.push_back(i);
+    }
+
 }
 
 int main(){
