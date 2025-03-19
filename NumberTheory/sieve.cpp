@@ -6,6 +6,9 @@ using namespace std;
 typedef int ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
+ll gcd(ll x, ll y){
+	return (!y ? x : gcd(y, x % y));
+}
 ll n, pt;
 ll A[MXN];
 vector<ll> lpf, Prm, prm;
