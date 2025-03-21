@@ -23,37 +23,36 @@ void Build(ll id = 1, ll s = 1, ll e = n){
     Build(lc, s, md), Build(rc, dm, e);
     seg[id] = (seg[lc] + seg[rc]) % Mod;
 }
-void Relax(ll id, ll s, ll e){
+inline ll f(ll x) { return (x * (x - 1) / 2) % Mod; }
+void Shift(ll id, ll s, ll e){
     if(ln < 1) return;
-    seg[id] = (seg[id] + ((((Sum[id] % Mod) * ln % Mod) + (((ln * (ln - 1) / 2) % Mod) * Ted[id] % Mod)) % Mod)) % Mod;
-    Ted[lc] = (Ted[lc] + Ted[id]) % Mod;
-    Ted[rc] = (Ted[rc] + Ted[id]) % Mod;
-    Sum[lc] = (Sum[lc] + Sum[id]) % Mod;
-    Sum[rc] = (Sum[rc] + ((Ted[id] * (dm - s) % Mod + Sum[id]) % Mod)) % Mod;
+    seg[id] += Sum[id] * ln + f(ln) * Ted[id];
+    seg[id] %= Mod;
+    if(ln > 1){
+        Ted[lc] = (Ted[lc] + Ted[id]) % Mod;
+        Ted[rc] = (Ted[rc] + Ted[id]) % Mod;
+        Sum[lc] = (Sum[lc] + Sum[id]) % Mod;
+        Sum[rc] = (Sum[rc] + Ted[id] * (dm - s) + Sum[id]) % Mod;
+    }
     Ted[id] = Sum[id] = 0;
 }
-ll Get(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
-    Relax(id, s, e);
-    if(l <= s && e <= r){
-        return seg[id];
-    }
-    if(s >= e) return 0;
-    ll ans = 0;
-    if(l <= md) ans = (ans + Get(l, r, lc, s, md)) % Mod;
-    if(r >= dm) ans = (ans + Get(l, r, rc, dm, e)) % Mod;
-    Relax(lc, s, md), Relax(rc, dm, e);
-    seg[id] = (seg[lc] + seg[rc]) % Mod;
-    return ans;
-}
 void Upd(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
-    Relax(id, s, e);
+    Shift(id, s, e);
+    if(e < l || s > r) return;
     if(l <= s && e <= r){
-        Sum[id] += (s - l + 1), Sum[id] %= Mod, Ted[id] ++; Relax(id, s, e); return;
+        Sum[id] += (s - l + 1); Sum[id] %= Mod;
+        Ted[id] ++;
+        Shift(id, s, e);
+        return;
     }
-    if(s >= e) return;
-    if(l <= md) Upd(l, r, lc, s, md);
-    if(r >= dm) Upd(l, r, rc, dm e);
+    Upd(l, r, lc, s, md), Upd(l, r, rc, dm, e);
     seg[id] = (seg[lc] + seg[rc]) % Mod;
+}
+ll Get(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
+    Shift(id, s, e);
+    if(e < l || s > r) return 0;
+    if(l <= s && e <= r) return seg[id];
+    return (Get(l, r, lc, s, md) + Get(l, r, rc, dm, e)) % Mod;
 }
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
