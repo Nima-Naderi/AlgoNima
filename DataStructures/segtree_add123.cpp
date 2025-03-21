@@ -1,4 +1,11 @@
+// #pragma GCC optimize("O2")
 #include<bits/stdc++.h>
+#define lc (id * 2)
+#define rc (id * 2 + 1)
+#define ln (e - s + 1)
+#define md ((s + e) / 2)
+#define dm ((s + e) / 2 + 1)
+#define Mp make_pair
 using namespace std;
 
 typedef long long ll;
@@ -12,17 +19,17 @@ void Build(ll id = 1, ll s = 1, ll e = n){
     if(s >= e){
         seg[id] = A[s]; return;
     }
-    Build(id * 2, s, mid), Build(id * 2 + 1, mid + 1, e);
-    seg[id] = (seg[id * 2] + seg[id * 2 + 1]) % Mod;
+    Build(lc, s, mid), Build(rc, mid + 1, e);
+    seg[id] = (seg[lc] + seg[rc]) % Mod;
 }
 inline void Relax(ll id, ll s, ll e){
     ll len = (e - s + 1), mid = (s + e) / 2;
     if(len < 1) return;
     seg[id] = (seg[id] + ((((Sum[id] % Mod) * len % Mod) + (((len * (len - 1) / 2) % Mod) * Ted[id] % Mod)) % Mod)) % Mod;
-    Ted[id * 2] = (Ted[id * 2] + Ted[id]) % Mod;
-    Ted[id * 2 + 1] = (Ted[id * 2 + 1] + Ted[id]) % Mod;
-    Sum[id * 2] = (Sum[id * 2] + Sum[id]) % Mod;
-    Sum[id * 2 + 1] = (Sum[id * 2 + 1] + ((Ted[id] * (mid + 1 - s) % Mod + Sum[id]) % Mod)) % Mod;
+    Ted[lc] = (Ted[lc] + Ted[id]) % Mod;
+    Ted[rc] = (Ted[rc] + Ted[id]) % Mod;
+    Sum[lc] = (Sum[lc] + Sum[id]) % Mod;
+    Sum[rc] = (Sum[rc] + ((Ted[id] * (mid + 1 - s) % Mod + Sum[id]) % Mod)) % Mod;
     Ted[id] = Sum[id] = 0;
 }
 ll Get(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
@@ -32,10 +39,10 @@ ll Get(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
     }
     if(s >= e) return 0;
     ll ans = 0;
-    if(l <= mid) ans = (ans + Get(l, r, id * 2, s, mid)) % Mod;
-    if(r >  mid) ans = (ans + Get(l, r, id * 2 + 1, mid + 1, e)) % Mod;
-    Relax(id * 2, s, mid), Relax(id * 2 + 1, mid + 1, e);
-    seg[id] = (seg[id * 2] + seg[id * 2 + 1]) % Mod;
+    if(l <= mid) ans = (ans + Get(l, r, lc, s, mid)) % Mod;
+    if(r >  mid) ans = (ans + Get(l, r, rc, mid + 1, e)) % Mod;
+    Relax(lc, s, mid), Relax(rc, mid + 1, e);
+    seg[id] = (seg[lc] + seg[rc]) % Mod;
     return ans;
 }
 void Upd(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
