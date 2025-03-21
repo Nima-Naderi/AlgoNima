@@ -13,22 +13,23 @@ const ll MXN = 4e5 + 10;
 const ll MXS = 4 * MXN;
 const ll Mod = 1e9 + 7;
 ll n, q;
-ll A[MXN], seg[MXS], Sum[MXS], Ted[MXS];
+ll A[MXN];
+ll seg[MXS], Sum[MXS], Ted[MXS];
 void Build(ll id = 1, ll s = 1, ll e = n){
-    if(s >= e){
+    Sum[id] = Ted[id] = 0;
+    if(ln == 1){
         seg[id] = A[s]; return;
     }
     Build(lc, s, md), Build(rc, dm, e);
     seg[id] = (seg[lc] + seg[rc]) % Mod;
 }
-inline void Relax(ll id, ll s, ll e){
-    ll len = (e - s + 1), mid = (s + e) / 2;
-    if(len < 1) return;
-    seg[id] = (seg[id] + ((((Sum[id] % Mod) * len % Mod) + (((len * (len - 1) / 2) % Mod) * Ted[id] % Mod)) % Mod)) % Mod;
+void Relax(ll id, ll s, ll e){
+    if(ln < 1) return;
+    seg[id] = (seg[id] + ((((Sum[id] % Mod) * ln % Mod) + (((ln * (ln - 1) / 2) % Mod) * Ted[id] % Mod)) % Mod)) % Mod;
     Ted[lc] = (Ted[lc] + Ted[id]) % Mod;
     Ted[rc] = (Ted[rc] + Ted[id]) % Mod;
     Sum[lc] = (Sum[lc] + Sum[id]) % Mod;
-    Sum[rc] = (Sum[rc] + ((Ted[id] * (mid + 1 - s) % Mod + Sum[id]) % Mod)) % Mod;
+    Sum[rc] = (Sum[rc] + ((Ted[id] * (dm - s) % Mod + Sum[id]) % Mod)) % Mod;
     Ted[id] = Sum[id] = 0;
 }
 ll Get(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
