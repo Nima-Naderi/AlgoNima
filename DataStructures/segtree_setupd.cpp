@@ -11,7 +11,7 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 2e5 + 10;
-const ll MXS = 8e5 + 10;
+const ll MXS = MXN * 4 + 10;
 const ll INF = 1e9 + 10;
 ll n, q;
 ll A[MXN];
