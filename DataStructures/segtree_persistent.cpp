@@ -68,6 +68,7 @@ DATA Get(ll l, ll r, ll id, ll s = 1, ll e = n){
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
     
+    //Build the base
     ort = Root[n + 1] = Build();
 
     vector<ll> Qry[MXN];
@@ -75,20 +76,23 @@ int main(){
         //For query:
         for(auto X: Qry[i]) ort = Upd(X);
 
+        //Save root at spesific times
         Root[i] = ort;
     }
     cin >> q;
     while(q --){
         ll l, r, k; cin >> l >> r >> k;
+
+        // Solution: Binary search on the timeline
         ll low = 1, up = n + 1;
         while(up - low > 1){
             ll mid = (low + up) / 2;
             if(Get(l, r, Root[mid]).ans >= k) low = mid;
             else               up = mid;
         }
-        
+
+        //Idea: Somtimes Binary search on segment tree is possible
     }
-    //TODO: to clean here
     return 0;
 }
 //! N.N
