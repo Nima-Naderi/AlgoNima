@@ -28,11 +28,10 @@ DATA Merge(const DATA& a, const DATA& b){
     else              c.suf = b.suf;
     return c;
 }
-ll n, q, ts, ort;
-ll A[MXN], Root[MXN];
-int LC[MXS], RC[MXS];
+ll n, ts, ort; //Important!
+ll Root[MXN]; //MXN refers to different time slots
 DATA seg[MXS];
-vector<ll> vec[MXN], Num;
+int LC[MXS], RC[MXS];
 ll New(ll id){
     ll nd = ++ ts;
     LC[nd] = LC[id], RC[nd] = RC[id], seg[nd] = seg[id];
@@ -50,6 +49,7 @@ ll Build(ll s = 1, ll e = n){
 ll Upd(ll p, ll id = ort, ll s = 1, ll e = n){
     ll nd = New(id);
     if(ln == 1){
+        /* update node part */
         seg[nd].pre = seg[nd].suf = seg[nd].ans = 1;
         return nd;
     }
@@ -64,17 +64,17 @@ DATA Get(ll l, ll r, ll id, ll s = 1, ll e = n){
     if(l >= dm) return Get(l, r, RC[id], dm, e);
     return Merge(Get(l, r, LC[id], s, md), Get(l, r, RC[id], dm, e));
 }
+
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-    cin >> n;
-    for(int i = 1; i <= n; i ++) cin >> A[i], Num.push_back(A[i]);
-    sort(Num.begin(), Num.end());
-    Num.resize(unique(Num.begin(), Num.end()) - Num.begin());
-    for(int i = 1; i <= n; i ++) A[i] = lower_bound(Num.begin(), Num.end(), A[i]) - Num.begin() + 1;
-    for(int i = 1; i <= n; i ++) vec[A[i]].push_back(i);
+    
     ort = Root[n + 1] = Build();
+
+    vector<ll> Qry[MXN];
     for(int i = n; i; i --){
-        for(auto X : vec[i]) ort = Upd(X);
+        //For query:
+        for(auto X: Qry[i]) ort = Upd(X);
+
         Root[i] = ort;
     }
     cin >> q;
@@ -86,7 +86,7 @@ int main(){
             if(Get(l, r, Root[mid]).ans >= k) low = mid;
             else               up = mid;
         }
-        cout << Num[low - 1] << '\n';
+        
     }
     //TODO: to clean here
     return 0;
