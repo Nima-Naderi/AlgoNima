@@ -15,11 +15,10 @@ const ll Mod = 1e9 + 7;
 ll n, q;
 ll A[MXN], seg[MXS], Sum[MXS], Ted[MXS];
 void Build(ll id = 1, ll s = 1, ll e = n){
-    ll mid = (s + e) / 2;
     if(s >= e){
         seg[id] = A[s]; return;
     }
-    Build(lc, s, mid), Build(rc, mid + 1, e);
+    Build(lc, s, md), Build(rc, dm, e);
     seg[id] = (seg[lc] + seg[rc]) % Mod;
 }
 inline void Relax(ll id, ll s, ll e){
@@ -33,28 +32,27 @@ inline void Relax(ll id, ll s, ll e){
     Ted[id] = Sum[id] = 0;
 }
 ll Get(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
-    ll mid = (s + e) / 2; Relax(id, s, e);
+    Relax(id, s, e);
     if(l <= s && e <= r){
         return seg[id];
     }
     if(s >= e) return 0;
     ll ans = 0;
-    if(l <= mid) ans = (ans + Get(l, r, lc, s, mid)) % Mod;
-    if(r >  mid) ans = (ans + Get(l, r, rc, mid + 1, e)) % Mod;
-    Relax(lc, s, mid), Relax(rc, mid + 1, e);
+    if(l <= md) ans = (ans + Get(l, r, lc, s, md)) % Mod;
+    if(r >= dm) ans = (ans + Get(l, r, rc, dm, e)) % Mod;
+    Relax(lc, s, md), Relax(rc, dm, e);
     seg[id] = (seg[lc] + seg[rc]) % Mod;
     return ans;
 }
 void Upd(ll l, ll r, ll id = 1, ll s = 1, ll e = n){
-    ll mid = (s + e) / 2; Relax(id, s, e);
+    Relax(id, s, e);
     if(l <= s && e <= r){
         Sum[id] += (s - l + 1), Sum[id] %= Mod, Ted[id] ++; Relax(id, s, e); return;
     }
     if(s >= e) return;
-    if(l <= mid) Upd(l, r, id * 2, s, mid);
-    if(r >  mid) Upd(l, r, id * 2 + 1, mid + 1, e);
-    Relax(id * 2, s, mid), Relax(id * 2 + 1, mid + 1, e);
-    seg[id] = (seg[id * 2] + seg[id * 2 + 1]) % Mod;
+    if(l <= md) Upd(l, r, lc, s, md);
+    if(r >= dm) Upd(l, r, rc, dm e);
+    seg[id] = (seg[lc] + seg[rc]) % Mod;
 }
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
