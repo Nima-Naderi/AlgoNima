@@ -16,6 +16,9 @@ struct Data {
 	ll l, r;
 	ll pre, suff, x;
 	bool all;
+    DATA(){
+        l = r = pre = suff = x = all = 0;
+    }
 };
 ll n, q, A[MXN];
 Data seg[MXS];
