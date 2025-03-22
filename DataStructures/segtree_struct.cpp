@@ -16,7 +16,7 @@ struct Data {
 	ll l, r;
 	ll pre, suff, x;
 	bool all;
-    DATA(){
+    Data(){
         l = r = pre = suff = x = all = 0;
     }
 };
