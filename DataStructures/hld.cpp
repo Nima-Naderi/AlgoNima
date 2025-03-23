@@ -10,11 +10,13 @@ typedef long long ll;
 const ll MXN = 1e5 + 10;
 const ll MXS = MXN * 4;
 const ll INF = 1e16;
-ll n, m, q, timer;
+ll n, m, q, timer; //important
 ll Par[MXN], dis[MXN], sub[MXN], hvs[MXN];
 ll hd[MXN], Tree[MXN], Stm[MXN], Ftm[MXN];
+
 pair<ll, ll> seg[MXS], Now;
 ll Lazy[MXS], SigLz[MXS];
+
 vector<ll> adj[MXN], ANS;
 vector<pair<ll, ll>> Cnd[MXN];
 
