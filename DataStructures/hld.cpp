@@ -102,6 +102,16 @@ void Qry(ll u, ll v){ //u is Jad v
     }
     fetch(Stm[u], Stm[v]);
 }
+/* //sample root to u query:
+ll Geq(ll u){
+    ll ans = 0;
+    while(u){
+        ans += Get(Stm[hd[u]], Stm[u]);
+        u = Par[hd[u]];
+    }
+    return ans;
+}
+*/
 
 // ===== LCA with HLD =====
 ll LCA(ll u, ll v){
