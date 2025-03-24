@@ -5,8 +5,8 @@ using namespace std;
 typedef long long ll;
 const ll MXN = 1e6 + 10;
 ll n, k, x;
-ll Comp[MXN], Cnt[MXN], dp[MXN];
-vector<ll> adj[MXN], adt[MXN], G[MXN], V[MXN], Jad, Top;
+ll Comp[MXN];
+vector<ll> adj[MXN], adt[MXN], Top;
 bool mark[MXN], vis[MXN];
 
 void dfs(ll u){
@@ -34,16 +34,12 @@ int main(){
     }
     reverse(Top.begin(), Top.end());
     for(auto u : Top){
-        if(!vis[u]) sfd(u), x ++, dp[x - 1] = Cnt[x - 1];
-    }
-    for(int c = x - 1; c; c --){
-        for(auto u : V[c]){
-            for(auto v : adj[u]){
-                if(Comp[v] != c) dp[c] = max(dp[c], Cnt[c] + dp[Comp[v]]);
-            }
+        if(!vis[u]){
+            sfd(u);
+            x ++;
         }
     }
-    cout << dp[Comp[1]] << '\n';
+    
     return 0;
 }
 //! N.N
