@@ -54,14 +54,29 @@ map<valarray<u64>, ll, ValarrayComparator> mp;
 
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);	
-	
 	initFen();
-	cin >> n;
+	cin >> n >> q;
 	for(int i = 1; i <= n; i ++){
-		ll x; cin >> x;
-		A[i] = to_arr(x); //auto y = ..
+		ll x; cin >> x; A[i] = to_arr(x);
+		Upd(i, A[i]);
 	}
-
+	while(q --){
+		ll c, l, r, k; cin >> c;
+		if(c == 1){
+			cin >> l >> k;
+			auto x = to_arr(k);
+			Upd(l, -A[l] + x);
+			A[l] = x;
+		} else {
+			cin >> l >> r >> k;
+			auto h = Get(r); h = h - Get(l - 1);
+			bool flag = true;
+			for(int b = 0; b < MXK; b ++)
+				flag &= (h[b] % k == 0);
+			cout << (flag ? "YES\n" : "NO\n");
+		}
+	}
+	//CF: 1746F
 	return 0;
 }
 //! N.N
