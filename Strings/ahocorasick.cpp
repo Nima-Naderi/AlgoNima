@@ -1,4 +1,3 @@
-///In the name of GOD
 //#pragma GCC optimize("O2")
 #include<bits/stdc++.h>
 using namespace std;
@@ -7,12 +6,15 @@ typedef long long ll;
 const ll MXN = 5e5 + 10;
 const ll SGM = 26;
 ll n, q, ts = 1, timer;
-ll A[MXN], Ans[MXN], ver[MXN];
+ll A[MXN], Ans[MXN];
 ll Stm[MXN], Ftm[MXN], Fen[MXN];
-ll nxt[MXN][SGM], Qq[MXN], lps[MXN];
+
 vector<ll> adj[MXN];
 vector<pair<ll, ll>> Q[MXN];
+
 string S[MXN];
+ll nxt[MXN][SGM];
+ll Qq[MXN], lps[MXN], ver[MXN];
 void Add(ll id){
     cin >> S[id];
     ll u = 1, sz = S[id].size();
@@ -69,8 +71,15 @@ void SPARSE(ll id){
 int main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
     cin >> n >> q;
+
+    //Build Trie
     for(int i = 1; i <= n; i ++) Add(i);
-    Aho(), dfs(1);
+    // Build Aho
+    Aho();
+    // Aho-tree
+    dfs(1);
+
+    
     for(int i = 1; i <= q; i ++){
         ll l, r, k; cin >> l >> r >> k;
         Q[r].push_back({k, i});
@@ -84,12 +93,7 @@ int main(){
         }
     }
     for(int i = 1; i <= q; i ++) cout << Ans[i] << '\n';
+    // CF-547E
     return 0;
 }
-/*!
-    HE'S AN INSTIGATOR,
-    ENEMY ELIMINATOR,
-    AND WHEN HE KNOCKS YOU BETTER
-    YOU BETTER LET HIM IN.
-*/
 //! N.N
