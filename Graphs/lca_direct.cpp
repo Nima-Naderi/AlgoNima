@@ -13,15 +13,15 @@ vector<ll> adj[MXN];
 
 int lg[MX2N], dis[MXN], last[MXN];
 int RMQ[MX2N][LOG], ind[MX2N][LOG];
-void dfs(ll u, ll par){
+vector<int> Tour;
+void TourDFS(ll u, ll par){
     last[u] = (int)Tour.size();
-    Tour.pb({dis[u], u});
-
+    Tour.push_back(Mp(dis[u], u));
     for(auto v : adj[u]){
         if(v == p) continue;
         dis[v] = dis[u] + 1;
-        dfsT(v);
-        Tour.pb({dis[u], u});
+        TourDFS(v, u);
+        Tour.push_back(Mp(dis[u], u));
     }
     return;
 }
@@ -30,7 +30,7 @@ inline void InitLog(){
 	for(int i = 1; i < MXN; i ++)          lg[i] = max(lg[i - 1], lg[i]);
 }
 void prep(){
-    dfsT(root);
+    TourDFS(root);
     InitLog();
     for(int i = (int)Tour.size() - 1; i >= 0; i --){
         RMQ[i][0] = Tour[i].F,  ind[i][0] = Tour[i].S;
