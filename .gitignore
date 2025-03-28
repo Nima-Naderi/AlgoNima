@@ -33,3 +33,8 @@
 
 # VS-Code
 .vscode/*
+
+# CPH Judge
+*.cph
+*.vscode
+*.bin
