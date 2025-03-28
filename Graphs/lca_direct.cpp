@@ -11,18 +11,17 @@ const ll LOG = 20;
 ll n;
 vector<ll> adj[MXN];
 
-int lg[MX2N], dis[MXN];
+int lg[MX2N], dis[MXN], last[MXN];
 int RMQ[MX2N][LOG], ind[MX2N][LOG];
-void dfsT(ll u){
-    visi[u] = 1, last[u] = (int)Tour.size();
+void dfs(ll u, ll par){
+    last[u] = (int)Tour.size();
     Tour.pb({dis[u], u});
-    for(auto Pr : G[u]){
-        ll v = Pr.F;
-        if(!visi[v]){
-            dis[v] = dis[u] + 1;
-            dfsT(v);
-            Tour.pb({dis[u], u});
-        }
+
+    for(auto v : adj[u]){
+        if(v == p) continue;
+        dis[v] = dis[u] + 1;
+        dfsT(v);
+        Tour.pb({dis[u], u});
     }
     return;
 }
