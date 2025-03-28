@@ -8,6 +8,7 @@ typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
 const ll MX2N = MXN * 2;
 const ll LOG = 20;
+const ll INF = 1e9;
 ll n;
 vector<ll> adj[MXN];
 
@@ -15,7 +16,7 @@ int lg[MX2N], dis[MXN], last[MXN];
 int RMQ[MX2N][LOG], ind[MX2N][LOG];
 vector<int> Tour;
 void TourDFS(ll u, ll par){
-    last[u] = (int)Tour.size();
+    last[u] = Tour.size();
     Tour.push_back(Mp(dis[u], u));
     for(auto v : adj[u]){
         if(v == p) continue;
@@ -30,10 +31,10 @@ inline void InitLog(){
 	for(int i = 1; i < MXN; i ++)          lg[i] = max(lg[i - 1], lg[i]);
 }
 void prep(){
-    TourDFS(root);
-    InitLog();
-    for(int i = (int)Tour.size() - 1; i >= 0; i --){
-        RMQ[i][0] = Tour[i].F,  ind[i][0] = Tour[i].S;
+    ll root = 1; dis[root] = 0;
+    TourDFS(root), InitLog();
+    for(int i = Tour.size() - 1; i >= 0; i --){
+        RMQ[i][0] = Tour[i].first,  ind[i][0] = Tour[i].second;
         for(int j = 1; j < LOG; j ++){
             if(Tour.size() >= (1LL << j)){
                 RMQ[i][j] = min(RMQ[i][j - 1], RMQ[i + (1LL << (j - 1))][j - 1]);
