@@ -24,7 +24,7 @@ int32_t main(){
     }
     for(int i = 1; i <= q; i ++){
         ll k, x; cin >> k >> x;
-        cout << *os.find_by_order(k) << " - " << os.order_of_key(x) << '\n';
+        cout << *os.find_by_order(k) << " " << os.order_of_key(x) << '\n';
     }
 
 	return 0;
