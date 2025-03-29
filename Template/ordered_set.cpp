@@ -7,25 +7,24 @@ typedef long long ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
 
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-	
+	cin >> n;
+    for(int i = 1; i <= n; i ++){
+        ll x; cin >> x;
+        
+    }
 
 	return 0;
 }
 //! N.N
 
-// #include <bits/stdc++.h>
-
-// #include <ext/pb_ds/assoc_container.hpp>
-// #include <ext/pb_ds/tree_policy.hpp>
-
-// using namespace std;
-// using namespace __gnu_pbds;
-
-// #define forn(i, n) for (int i = 0; i < int(n); i++)
-
-// typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+typedef tree<int, null_type, less<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 
 // int main() {
 //     int n;
