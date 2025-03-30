@@ -30,7 +30,7 @@ inline void InitLog(){
 	for(int i = 1; i < MXN; i ++)          lg[i] = max(lg[i - 1], lg[i]);
 }
 void prep(ll root){
-    TourDFS(root), InitLog();
+    Tour.clear(), TourDFS(root), InitLog();
     for(int i = Tour.size() - 1; i >= 0; i --){
         RMQ[i][0] = Tour[i].first,  ind[i][0] = Tour[i].second;
         for(int j = 1; j < LOG; j ++){
