@@ -23,7 +23,6 @@ void TourDFS(ll u, ll par){
         TourDFS(v, u);
         Tour.push_back(Mp(dis[u], u));
     }
-    return;
 }
 inline void InitLog(){
 	for(int i = 0; (1LL << i) < MXN; i ++) lg[(1LL << i)] = i;
@@ -41,7 +40,6 @@ void prep(ll root){
             } else RMQ[i][j] = INF;
         }
     }
-    return;
 }
 ll LCA(ll u, ll v){
     ll l = last[u], r = last[v];
