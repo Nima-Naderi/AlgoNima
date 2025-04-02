@@ -112,5 +112,7 @@ int32_t main(){
 		l ++ , rm1(l , g);
 	}
 	cout << ans;
+
+    //TODO: refactor this code to be cleaner
     return(0);
 }
