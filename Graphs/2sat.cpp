@@ -61,8 +61,56 @@ struct sat{
 	}
 };
 
+int n;
+
+int a[maxn][maxn];
+vector < int > w;
+
+vector < pii > vec[maxn * maxn];
+
+void add1(int x , sat &g){
+	for (auto [i , j] : vec[x])
+		g.add(i*2 + 1 , j * 2 + 1);
+}
+
+void add2(int x , sat &g){
+	for (auto [i , j] : vec[x])
+		g.add(i*2 , j*2);
+}
+
+void rm1(int x , sat &g){
+	for (auto [i , j] : vec[x])
+		g.rm(i*2 + 1 , j * 2 + 1);
+}
+
+
 int32_t main(){
     migmig;
-    
+     cin >> n;
+    sat g(n);
+    for(int i = 1 ; i <= n ; i ++)
+		for(int j = i + 1 ; j <= n ; j ++)
+			cin >> a[i][j] , a[j][i] = a[i][j] , w.pb(a[i][j]);
+	w.pb(0);
+	w.pb(-1);
+	sort(w.begin() , w.end());
+	w.resize(unique(w.begin() , w.end()) - w.begin());
+	int ans = 2e9;
+	for(int i =1  ; i <= n ; i ++)
+		for(int j = 1 ; j <= n ; j ++)
+			if(j^i)vec[lower_bound(w.begin() , w.end() , a[i][j]) - w.begin()].pb({i , j});
+	int sz = w.size() - 1;
+	int l = 1 , r = sz;
+	for(int i = l+1 ; i <= r ; i ++)
+		add1(i , g);
+	ans = min(ans , w[l] + w[r]);
+	while(l <= sz){
+		if(w[l]>=ans)break;
+		while(g.validate() and r >= l)
+			ans = min(ans , w[l] + w[r]),
+			add2(r , g) , r--;
+		l ++ , rm1(l , g);
+	}
+	cout << ans;
     return(0);
 }
