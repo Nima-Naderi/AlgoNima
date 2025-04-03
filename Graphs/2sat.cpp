@@ -6,8 +6,6 @@ using namespace std;
 
 typedef pair<int  ,int > pii;
 
-mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-
 const int maxn  = 203;
 
 #define pb push_back
