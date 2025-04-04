@@ -16,7 +16,7 @@ bitset < maxn * 2 >  in[maxn*2] , out[maxn*2] , tmp[maxn * 2] , mark;
 
 struct sat{
 	int n, c;
-	vector < int > col , topo;
+	vector < int > col , Top;
 	sat(int N):
 		n(N) , c(0) , col(2*n + 5){}
 	bool operator [] (int x) { return(col[2*x] > col[2*x + 1]); }
@@ -26,8 +26,8 @@ struct sat{
 	void rm(int v , int u){rm_e(u^1 , v) , rm_e(v^1 , u);}
 	void clear(){
 		c = 0;
-		topo.clear();
-		topo.reserve(1 << 3);
+		Top.clear();
+		Top.reserve(1 << 3);
 		mark = 0;
 		mark.flip();
 	}
@@ -43,19 +43,26 @@ struct sat{
 		tmp[v] = out[v] & mark;
 		for(int u = tmp[v]._Find_first() ; u < (int)tmp[v].size(); u = tmp[v]._Find_next(u))
 			dfs(u), tmp[v]&=mark;
-		topo.pb(v);
+		Top.pb(v);
 	}
-	bool validate(){
+	bool Validate(){
 		clear();
-		for(int i = 1 ; i <= 2*n+1 ; i ++ ) if(mark[i]) dfs(i);
-		reverse(topo.begin() , topo.end());
-		mark = 0;
-		mark.flip();
-		for(auto v : topo)
-			if(mark[v])
-				++c , sfd(v);
-		for(int i = 1 ; i <= n ; i ++) if(col[i * 2] == col[i * 2 + 1])return(0);
-	return(1);
+		for(int u = 1; u <= 2 * n + 1; u ++){
+			if(mark[u]){
+				dfs(u);
+			}
+		}
+		reverse(Top.begin(), Top.end());
+		mark = 0; mark.flip();
+		for(auto u : Top){
+			if(mark[u]){
+				c ++, sfd(u);
+			}
+		}
+		for(int i = 1; i <= n; i ++){
+			if(col[i * 2] == col[i * 2 + 1]) return 0;
+		}
+		return 1;
 	}
 };
 
@@ -104,7 +111,7 @@ int32_t main(){
 	ans = min(ans , w[l] + w[r]);
 	while(l <= sz){
 		if(w[l]>=ans)break;
-		while(g.validate() and r >= l)
+		while(g.Validate() and r >= l)
 			ans = min(ans , w[l] + w[r]),
 			add2(r , g) , r--;
 		l ++ , rm1(l , g);
