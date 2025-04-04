@@ -14,10 +14,10 @@ const int maxn  = 203;
 
 bitset < maxn * 2 >  in[maxn*2] , out[maxn*2] , tmp[maxn * 2] , mark;
 
-struct sat{
+struct TwoSat {
 	int n, c;
 	vector < int > col , Top;
-	sat(int N):
+	TwoSat(int N):
 		n(N) , c(0) , col(2*n + 5){}
 	bool operator [] (int x) { return(col[2*x] > col[2*x + 1]); }
 	void add_e(int v , int u){in[u][v] = 1 , out[v][u] = 1;}
@@ -73,17 +73,17 @@ vector < int > w;
 
 vector < pii > vec[maxn * maxn];
 
-void add1(int x , sat &g){
+void add1(int x , TwoSat &g){
 	for (auto [i , j] : vec[x])
 		g.add(i*2 + 1 , j * 2 + 1);
 }
 
-void add2(int x , sat &g){
+void add2(int x , TwoSat &g){
 	for (auto [i , j] : vec[x])
 		g.add(i*2 , j*2);
 }
 
-void rm1(int x , sat &g){
+void rm1(int x , TwoSat &g){
 	for (auto [i , j] : vec[x])
 		g.rm(i*2 + 1 , j * 2 + 1);
 }
@@ -92,7 +92,7 @@ void rm1(int x , sat &g){
 int32_t main(){
     migmig;
      cin >> n;
-    sat g(n);
+    TwoSat g(n);
     for(int i = 1 ; i <= n ; i ++)
 		for(int j = i + 1 ; j <= n ; j ++)
 			cin >> a[i][j] , a[j][i] = a[i][j] , w.pb(a[i][j]);
