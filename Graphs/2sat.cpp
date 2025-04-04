@@ -1,4 +1,3 @@
-/** i can do this all day **/
 #pragma GCC optimize("Ofast")
 #include <bits/stdc++.h>
 
@@ -15,7 +14,7 @@ const int maxn  = 203;
 bitset < maxn * 2 >  in[maxn*2] , out[maxn*2] , tmp[maxn * 2] , mark;
 
 struct TwoSat {
-	int n, c;
+	int n, c; // TODO: change c to comp_cnt
 	vector < int > col , Top;
 	TwoSat(int N):
 		n(N) , c(0) , col(2*n + 5){}
@@ -38,12 +37,13 @@ struct TwoSat {
 		for(int u = tmp[v]._Find_first() ; u < (int)tmp[v].size(); u = tmp[v]._Find_next(u))
 			sfd(u), tmp[v]&=mark;
 	}
-	void dfs(int v){
-		mark[v] = 0;
-		tmp[v] = out[v] & mark;
-		for(int u = tmp[v]._Find_first() ; u < (int)tmp[v].size(); u = tmp[v]._Find_next(u))
-			dfs(u), tmp[v]&=mark;
-		Top.pb(v);
+	void dfs(ll u){
+		mark[u] = 0;
+		tmp[u] = out[u] & mark;
+		for(int v = tmp[u]._Find_first(); v < (int)tmp[u].size(); v = tmp[u]._Find_next(v)){
+			dfs(v), tmp[u] &= mark;
+		}
+		Top.push_back(u);
 	}
 	bool Validate(){
 		clear();
