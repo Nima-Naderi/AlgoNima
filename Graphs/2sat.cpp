@@ -23,6 +23,20 @@ struct TwoSat {
 	void add(int v , int u){add_e(u^1 , v) , add_e(v^1 , u);}
 	void rm_e(int v , int u){in[u][v] = 0 , out[v][u] = 0;}
 	void rm(int v , int u){rm_e(u^1 , v) , rm_e(v^1 , u);}
+
+	inline void AddEdge(ll u, ll v){
+		in[v][u] = 1, out[u][v] = 1;
+	}
+	inline void RmvEdge(ll u, ll v){
+		in[v][u] = 0, out[u][v] =0;
+	}
+	inline void Add(ll u, ll v){
+		AddEdge(v ^ 1, u), AddEdge(u ^ 1, v);
+	}
+	inline void Rmv(ll u, ll v){
+		RemoveEdge(v ^ 1, u), RemoveEdge(u ^ 1, v);
+	}
+
 	void Clear(){
 		comp_cnt = 0; Top.clear(), Top.reserve(1 << 3);
 		mark = 0; mark.flip();
