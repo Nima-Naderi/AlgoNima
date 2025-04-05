@@ -5,14 +5,14 @@ using namespace std;
 
 typedef pair<int  ,int > pii;
 
-const int maxn  = 203;
+const int MXN  = 203;
 
 #define pb push_back
 #define migmig ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
 #define ms(x , y) memset(x , y , sizeof x)
 
-bitset < maxn * 2 >  in[maxn*2] , out[maxn*2] , tmp[maxn * 2] , mark;
 
+bitset<MXN * 2> in[MXN * 2], out[MXN * 2], tmp[MXN * 2], mark;
 struct TwoSat {
 	ll n, comp_cnt;
 	vector<ll> col, Top;
@@ -34,7 +34,7 @@ struct TwoSat {
 	inline void Rmv(ll u, ll v){
 		RemoveEdge(v ^ 1, u), RemoveEdge(u ^ 1, v);
 	}
-	
+
 	void Clear(){
 		comp_cnt = 0; Top.clear(), Top.reserve(1 << 3);
 		mark = 0; mark.flip();
