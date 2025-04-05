@@ -1,14 +1,12 @@
-#pragma GCC optimize("Ofast")
+#pragma GCC optimize("O2")
 #include <bits/stdc++.h>
-
+#define Mp make_pair
 using namespace std;
 
-typedef pair<int  ,int > pii;
-
+typedef long long ll;
+typedef pair<ll, ll> pll;
 const ll MXN = 200 + 5;
 const ll MX2S = MXN * 2;
-
-#define pb push_back
 
 bitset<MX2S> in[MX2S], out[MX2S], tmp[MX2S], mark;
 struct TwoSat {
@@ -73,12 +71,13 @@ struct TwoSat {
 	}
 };
 
+
 int n;
 
 int a[MXN][MXN];
 vector < int > w;
 
-vector < pii > vec[MXN * MXN];
+vector < pll > vec[MXN * MXN];
 
 void add1(int x , TwoSat &g){
 	for (auto [i , j] : vec[x])
@@ -102,15 +101,15 @@ int32_t main(){
     TwoSat g(n);
     for(int i = 1 ; i <= n ; i ++)
 		for(int j = i + 1 ; j <= n ; j ++)
-			cin >> a[i][j] , a[j][i] = a[i][j] , w.pb(a[i][j]);
-	w.pb(0);
-	w.pb(-1);
+			cin >> a[i][j] , a[j][i] = a[i][j] , w.push_back(a[i][j]);
+	w.push_back(0);
+	w.push_back(-1);
 	sort(w.begin() , w.end());
 	w.resize(unique(w.begin() , w.end()) - w.begin());
 	int ans = 2e9;
 	for(int i =1  ; i <= n ; i ++)
 		for(int j = 1 ; j <= n ; j ++)
-			if(j^i)vec[lower_bound(w.begin() , w.end() , a[i][j]) - w.begin()].pb({i , j});
+			if(j^i)vec[lower_bound(w.begin() , w.end() , a[i][j]) - w.begin()].push_back({i , j});
 	int sz = w.size() - 1;
 	int l = 1 , r = sz;
 	for(int i = l+1 ; i <= r ; i ++)
@@ -125,6 +124,6 @@ int32_t main(){
 	}
 	cout << ans;
 
-    //TODO: refactor this code to be cleaner
-    return(0);
+    //TODO: refactor the main function
+    return 0;
 }
