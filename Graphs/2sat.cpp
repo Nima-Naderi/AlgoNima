@@ -14,8 +14,8 @@ const int maxn  = 203;
 bitset < maxn * 2 >  in[maxn*2] , out[maxn*2] , tmp[maxn * 2] , mark;
 
 struct TwoSat {
-	int n, c; // TODO: change c to comp_cnt
-	vector < int > col , Top;
+	ll n, comp_cnt;
+	vector<ll> col, Top;
 	TwoSat(int N):
 		n(N) , c(0) , col(2*n + 5){}
 	bool operator [] (int x) { return(col[2*x] > col[2*x + 1]); }
@@ -24,11 +24,11 @@ struct TwoSat {
 	void rm_e(int v , int u){in[u][v] = 0 , out[v][u] = 0;}
 	void rm(int v , int u){rm_e(u^1 , v) , rm_e(v^1 , u);}
 	void Clear(){
-		c = 0; Top.clear(), Top.reserve(1 << 3);
+		comp_cnt = 0; Top.clear(), Top.reserve(1 << 3);
 		mark = 0; mark.flip();
 	}
 	void sfd(ll u){
-		col[u] = c, mark[u] = 0;
+		col[u] = comp_cnt, mark[u] = 0;
 		tmp[u] = in[u] & mark;
 		for(int v = tmp[u]._Find_first(); v < (int)tmp[u].size(); v = tmp[u]._Find_next(v)){
 			sfd(v), tmp[u] &= mark;
@@ -53,7 +53,7 @@ struct TwoSat {
 		mark = 0; mark.flip();
 		for(auto u : Top){
 			if(mark[u]){
-				c ++, sfd(u);
+				comp_cnt ++, sfd(u);
 			}
 		}
 		for(int i = 1; i <= n; i ++){
