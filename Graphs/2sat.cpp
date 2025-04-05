@@ -23,19 +23,16 @@ struct TwoSat {
 	void add(int v , int u){add_e(u^1 , v) , add_e(v^1 , u);}
 	void rm_e(int v , int u){in[u][v] = 0 , out[v][u] = 0;}
 	void rm(int v , int u){rm_e(u^1 , v) , rm_e(v^1 , u);}
-	void clear(){
-		c = 0;
-		Top.clear();
-		Top.reserve(1 << 3);
-		mark = 0;
-		mark.flip();
+	void Clear(){
+		c = 0; Top.clear(), Top.reserve(1 << 3);
+		mark = 0; mark.flip();
 	}
-	void sfd(int v){
-		col[v] = c;
-		mark[v] = 0;
-		tmp[v] = in[v] & mark;
-		for(int u = tmp[v]._Find_first() ; u < (int)tmp[v].size(); u = tmp[v]._Find_next(u))
-			sfd(u), tmp[v]&=mark;
+	void sfd(ll u){
+		col[u] = c, mark[u] = 0;
+		tmp[u] = in[u] & mark;
+		for(int v = tmp[u]._Find_first(); v < (int)tmp[u].size(); v = tmp[u]._Find_next(v)){
+			sfd(v), tmp[u] &= mark;
+		}
 	}
 	void dfs(ll u){
 		mark[u] = 0;
@@ -46,7 +43,7 @@ struct TwoSat {
 		Top.push_back(u);
 	}
 	bool Validate(){
-		clear();
+		Clear();
 		for(int u = 1; u <= 2 * n + 1; u ++){
 			if(mark[u]){
 				dfs(u);
