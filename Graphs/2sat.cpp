@@ -5,14 +5,12 @@ using namespace std;
 
 typedef pair<int  ,int > pii;
 
-const int MXN  = 203;
+const ll MXN = 200 + 5;
+const ll MX2S = MXN * 2;
 
 #define pb push_back
-#define migmig ios::sync_with_stdio(false),cin.tie(0),cout.tie(0)
-#define ms(x , y) memset(x , y , sizeof x)
 
-
-bitset<MXN * 2> in[MXN * 2], out[MXN * 2], tmp[MXN * 2], mark;
+bitset<MX2S> in[MX2S], out[MX2S], tmp[MX2S], mark;
 struct TwoSat {
 	ll n, comp_cnt;
 	vector<ll> col, Top;
@@ -77,10 +75,10 @@ struct TwoSat {
 
 int n;
 
-int a[maxn][maxn];
+int a[MXN][MXN];
 vector < int > w;
 
-vector < pii > vec[maxn * maxn];
+vector < pii > vec[MXN * MXN];
 
 void add1(int x , TwoSat &g){
 	for (auto [i , j] : vec[x])
@@ -99,7 +97,7 @@ void rm1(int x , TwoSat &g){
 
 
 int32_t main(){
-    migmig;
+    ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
      cin >> n;
     TwoSat g(n);
     for(int i = 1 ; i <= n ; i ++)
