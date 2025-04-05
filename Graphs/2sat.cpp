@@ -16,13 +16,11 @@ bitset < maxn * 2 >  in[maxn*2] , out[maxn*2] , tmp[maxn * 2] , mark;
 struct TwoSat {
 	ll n, comp_cnt;
 	vector<ll> col, Top;
+
 	TwoSat(int N):
-		n(N) , c(0) , col(2*n + 5){}
-	bool operator [] (int x) { return(col[2*x] > col[2*x + 1]); }
-	void add_e(int v , int u){in[u][v] = 1 , out[v][u] = 1;}
-	void add(int v , int u){add_e(u^1 , v) , add_e(v^1 , u);}
-	void rm_e(int v , int u){in[u][v] = 0 , out[v][u] = 0;}
-	void rm(int v , int u){rm_e(u^1 , v) , rm_e(v^1 , u);}
+		n(N), comp_cnt(0), col(2*n + 5) {}
+
+	bool operator [] (ll x) { return col[2 * x] > col[2 * x + 1]; }
 
 	inline void AddEdge(ll u, ll v){
 		in[v][u] = 1, out[u][v] = 1;
@@ -36,7 +34,7 @@ struct TwoSat {
 	inline void Rmv(ll u, ll v){
 		RemoveEdge(v ^ 1, u), RemoveEdge(u ^ 1, v);
 	}
-
+	
 	void Clear(){
 		comp_cnt = 0; Top.clear(), Top.reserve(1 << 3);
 		mark = 0; mark.flip();
