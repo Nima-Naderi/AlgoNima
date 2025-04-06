@@ -72,39 +72,29 @@ struct TwoSat {
 };
 
 
-int n;
-
-int a[MXN][MXN];
-vector < int > w;
-
-vector < pll > vec[MXN * MXN];
-
-void add1(int x , TwoSat &g){
-	for (auto [i , j] : vec[x])
-		g.add(i*2 + 1 , j * 2 + 1);
+ll n;
+ll a[MXN][MXN];
+vector<int> w;
+vector<pll> vec[MXN * MXN];
+void add1(ll x, TwoSat &G){
+	for(auto [i , j] : vec[x]) G.add(i * 2 + 1, j * 2 + 1);
 }
-
-void add2(int x , TwoSat &g){
-	for (auto [i , j] : vec[x])
-		g.add(i*2 , j*2);
+void add2(ll x, TwoSat &G){
+	for(auto [i , j] : vec[x]) G.add(i * 2, j * 2);
 }
-
-void rm1(int x , TwoSat &g){
-	for (auto [i , j] : vec[x])
-		g.rm(i*2 + 1 , j * 2 + 1);
+void rm1(ll x, TwoSat &G){
+	for(auto [i , j] : vec[x]) G.rm(i * 2 + 1, j * 2 + 1);
 }
-
-
 int32_t main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-     cin >> n;
-    TwoSat g(n);
+    cin >> n;
+	TwoSat g(n);
     for(int i = 1 ; i <= n ; i ++)
 		for(int j = i + 1 ; j <= n ; j ++)
-			cin >> a[i][j] , a[j][i] = a[i][j] , w.push_back(a[i][j]);
+			cin >> a[i][j], a[j][i] = a[i][j], w.push_back(a[i][j]);
 	w.push_back(0);
 	w.push_back(-1);
-	sort(w.begin() , w.end());
+	sort(w.begin(), w.end());
 	w.resize(unique(w.begin() , w.end()) - w.begin());
 	int ans = 2e9;
 	for(int i =1  ; i <= n ; i ++)
