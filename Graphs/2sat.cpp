@@ -71,11 +71,6 @@ struct TwoSat {
 	}
 };
 
-
-ll n;
-ll a[MXN][MXN];
-vector<int> w;
-vector<pll> vec[MXN * MXN];
 void add1(ll x, TwoSat &G){
 	for(auto [i , j] : vec[x]) G.add(i * 2 + 1, j * 2 + 1);
 }
@@ -85,35 +80,14 @@ void add2(ll x, TwoSat &G){
 void rm1(ll x, TwoSat &G){
 	for(auto [i , j] : vec[x]) G.rm(i * 2 + 1, j * 2 + 1);
 }
+
 int32_t main(){
     ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
-    cin >> n;
-	TwoSat g(n);
-    for(int i = 1 ; i <= n ; i ++)
-		for(int j = i + 1 ; j <= n ; j ++)
-			cin >> a[i][j], a[j][i] = a[i][j], w.push_back(a[i][j]);
-	w.push_back(0);
-	w.push_back(-1);
-	sort(w.begin(), w.end());
-	w.resize(unique(w.begin() , w.end()) - w.begin());
-	int ans = 2e9;
-	for(int i =1  ; i <= n ; i ++)
-		for(int j = 1 ; j <= n ; j ++)
-			if(j^i)vec[lower_bound(w.begin() , w.end() , a[i][j]) - w.begin()].push_back({i , j});
-	int sz = w.size() - 1;
-	int l = 1 , r = sz;
-	for(int i = l+1 ; i <= r ; i ++)
-		add1(i , g);
-	ans = min(ans , w[l] + w[r]);
-	while(l <= sz){
-		if(w[l]>=ans)break;
-		while(g.Validate() and r >= l)
-			ans = min(ans , w[l] + w[r]),
-			add2(r , g) , r--;
-		l ++ , rm1(l , g);
-	}
-	cout << ans;
+    ll n; cin >> n;
 
-    //TODO: refactor the main function
+	TwoSat G(n);
+	// add1(u , G);
+	// G.Validate()
+
     return 0;
 }
