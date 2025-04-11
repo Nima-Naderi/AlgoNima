@@ -22,6 +22,20 @@ inline void Clear(){
 	}
 	ans = 0; ts = 1;
 }
+ll XorCount(ll x){ // count pairs with xor >= k
+	ll u = 1, res = 0;
+	for(int b = LOG - 1; b >= 0; -- b){
+		if(bit(k, b) == 0){
+			res += sub[nxt[u][!bit(x, b)]];
+		}
+		ll xr = bit(x, b) ^ bit(k, b);
+		u = nxt[u][xr];
+		if(!u) break;
+	}
+	res += sub[u];
+	if(k == 0) res ++;
+	return res;
+}
 void Upd(ll x, ll chng){
 	if(chng == +1) ans += XorCount(x);
 	ll u = 1;
