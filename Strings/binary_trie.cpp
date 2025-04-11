@@ -9,9 +9,14 @@ typedef long long ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 2e5 + 10;
 const ll Mod = 998244353;
-
+const ll LOG = 32;
+const ll MXT = 2e5 * 32 + 10; // Total nodes in graph
+ll n, k;
+ll A[MXN];
 void solve(){
-	
+	cin >> n >> k; //k: the least xor result
+	for(int i = 1; i <= n; i ++) cin >> A[i];
+    
 }
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
