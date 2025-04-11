@@ -16,7 +16,16 @@ ll A[MXN];
 void solve(){
 	cin >> n >> k; //k: the least xor result
 	for(int i = 1; i <= n; i ++) cin >> A[i];
-    
+
+    // Finding the minimum interval with pair xor >= k
+    ll l = 1, r = 0, Ans = n + 1;
+	for(int i = 1; i <= n; i ++){
+		while(r < i) Upd(A[++ r], +1);
+		while(l < i) Upd(A[l ++], -1);
+		while(ans == 0 && r + 1 <= n) Upd(A[++ r], +1);
+        if(ans > 0) Ans = min(Ans, r - i + 1);
+	}
+	cout << (Ans == n + 1 ? -1 : Ans) << '\n';
 }
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
