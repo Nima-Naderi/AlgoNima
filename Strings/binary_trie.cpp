@@ -13,6 +13,15 @@ const ll LOG = 32;
 const ll MXT = 2e5 * 32 + 10; // Total nodes in graph
 ll n, k;
 ll A[MXN];
+ll ans = 0, ts = 1; // ans: number of good pairs
+ll nxt[MXT][2], sub[MXT];
+inline void Clear(){
+	for(int u = 1; u <= ts; u ++){
+		nxt[u][0] = nxt[u][1] = 0;
+		sub[u] = 0;
+	}
+	ans = 0; ts = 1;
+}
 void solve(){
 	cin >> n >> k; //k: the least xor result
 	for(int i = 1; i <= n; i ++) cin >> A[i];
@@ -26,6 +35,8 @@ void solve(){
         if(ans > 0) Ans = min(Ans, r - i + 1);
 	}
 	cout << (Ans == n + 1 ? -1 : Ans) << '\n';
+
+    Clear();
 }
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
