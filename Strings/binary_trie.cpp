@@ -22,6 +22,17 @@ inline void Clear(){
 	}
 	ans = 0; ts = 1;
 }
+void Upd(ll x, ll chng){
+	if(chng == +1) ans += XorCount(x);
+	ll u = 1;
+	sub[u] += chng;
+	for(int b = LOG - 1; b >= 0; -- b){
+		if(!nxt[u][bit(x, b)]) nxt[u][bit(x, b)] = ++ ts;
+		u = nxt[u][bit(x, b)];
+		sub[u] += chng;
+	}
+	if(chng == -1) ans -= XorCount(x);
+}
 void solve(){
 	cin >> n >> k; //k: the least xor result
 	for(int i = 1; i <= n; i ++) cin >> A[i];
