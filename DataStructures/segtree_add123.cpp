@@ -26,6 +26,7 @@ void Build(ll id = 1, ll s = 1, ll e = n){
 inline ll f(ll x) { return (x * (x - 1) / 2) % Mod; }
 void Shift(ll id, ll s, ll e){
     if(ln < 1) return;
+    if(!Sum[id] && !Ted[id]) return;
     seg[id] += Sum[id] * ln + f(ln) * Ted[id];
     seg[id] %= Mod;
     if(ln > 1){
