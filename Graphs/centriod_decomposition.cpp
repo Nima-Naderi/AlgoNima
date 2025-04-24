@@ -80,7 +80,7 @@ void DMS(ll u, ll h){
         if(!hide[v]) DMS(v, h + 1);
     }
 }
-void init(){
+void init(){ // TODO: copy phi inverse in Combinatrocis directory
     ll p = 2, m = Mod; phi = m;
     while(p * p <= m){
         if(m % p == 0){
@@ -108,10 +108,3 @@ int main(){
     // CF: 715C
     return 0;
 }
-/*!
-    HE'S AN INSTIGATOR,
-    ENEMY ELIMINATOR,
-    AND WHEN HE KNOCKS YOU BETTER
-    YOU BETTER LET HIM IN.
-*/
-//! N.N
