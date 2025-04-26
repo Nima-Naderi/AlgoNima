@@ -9,7 +9,8 @@ const ll MXN = 3e5 + 10;
 ll gcd(ll x, ll y){
 	return (!y ? x : gcd(y, x % y));
 }
-tuple<ll, ll, ll> extended_gcd(ll a, ll b) {
+// Bézout's identity
+tuple<ll, ll, ll> extended_gcd(ll a, ll b) { // Extended euclidean algorithm
     if (b == 0) return {a, 1, 0};
     auto [gcd, x1, y1] = extended_gcd(b, a % b);
     return {gcd, y1, x1 - (a / b) * y1};
