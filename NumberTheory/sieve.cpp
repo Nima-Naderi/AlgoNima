@@ -6,15 +6,6 @@ using namespace std;
 typedef int ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 3e5 + 10;
-ll gcd(ll x, ll y){
-	return (!y ? x : gcd(y, x % y));
-}
-// Bézout's identity
-tuple<ll, ll, ll> extended_gcd(ll a, ll b) { // Extended euclidean algorithm
-    if (b == 0) return {a, 1, 0};
-    auto [gcd, x1, y1] = extended_gcd(b, a % b);
-    return {gcd, y1, x1 - (a / b) * y1};
-} // [gcd, coeff of a, coeff of b]
 ll n, pt;
 ll A[MXN];
 vector<ll> lpf, Prm, prm;
