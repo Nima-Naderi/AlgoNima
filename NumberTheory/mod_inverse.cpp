@@ -10,11 +10,12 @@ ll gcd(ll x, ll y){
 	return (!y ? x : gcd(y, x % y));
 }
 // Extended euclidean algorithm - Bézout's identity
-tuple<ll, ll, ll> Euclidean(ll a, ll b) {
-    if (b == 0) return {a, 1, 0};
+tuple<ll, ll, ll> extended_gcd(ll a, ll b) {
+    if(b == 0) return {a, 1, 0};
     auto [gcd, x1, y1] = extended_gcd(b, a % b);
     return {gcd, y1, x1 - (a / b) * y1};
 }
+
 
 
 ll Mod;
