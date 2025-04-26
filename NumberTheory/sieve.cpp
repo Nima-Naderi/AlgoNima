@@ -9,6 +9,11 @@ const ll MXN = 3e5 + 10;
 ll gcd(ll x, ll y){
 	return (!y ? x : gcd(y, x % y));
 }
+tuple<ll, ll, ll> extended_gcd(ll a, ll b) {
+    if (b == 0) return {a, 1, 0};
+    auto [gcd, x1, y1] = extended_gcd(b, a % b);
+    return {gcd, y1, x1 - (a / b) * y1};
+}
 ll n, pt;
 ll A[MXN];
 vector<ll> lpf, Prm, prm;
