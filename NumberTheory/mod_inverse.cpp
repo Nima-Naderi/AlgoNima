@@ -10,17 +10,23 @@ ll gcd(ll x, ll y){
 	return (!y ? x : gcd(y, x % y));
 }
 // Extended euclidean algorithm - Bézout's identity
-tuple<ll, ll, ll> extended_gcd(ll a, ll b) {
+tuple<ll, ll, ll> extended_gcd(ll a, ll b){
     if(b == 0) return {a, 1, 0};
     auto [gcd, x1, y1] = extended_gcd(b, a % b);
     return {gcd, y1, x1 - (a / b) * y1};
 }
-
-
+ll inv(ll x, ll Mod){ // return 0 if doesn't exist
+    auto [g, ix, _] = extended_gcd(x, Mod);
+    if (g != 1) return 0;
+	return (ix % Mod + Mod) % Mod;
+}
 
 ll Mod;
 ll power(ll a, ll b){
-    return (!b ? 1 : power(a * a % Mod, b / 2) * (b & 1LL ? a : 1) % Mod);
+	return (!b ? 1 : power(a * a % Mod, b / 2) * (b & 1LL ? a : 1) % Mod);
+}
+ll inv(ll x){
+	return power(x, Mod - 2);
 }
 void init(){
     ll p = 2, m = Mod; phi = m;
