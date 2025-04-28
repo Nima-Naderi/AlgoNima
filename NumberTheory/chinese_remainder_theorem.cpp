@@ -16,6 +16,7 @@ tuple<ll, ll, ll> extended_gcd(ll a, ll b){
 	return {gcd, y1, x1 - (a / b) * y1};
 }
 ll inv(ll x, ll Mod){
+	//if(Mod == 1) return (x == 0 ? 0 : 1);
 	auto [g, ix, _] = extended_gcd(x, Mod);
 	if (g != 1) return 0;
 	return (ix % Mod + Mod) % Mod;
