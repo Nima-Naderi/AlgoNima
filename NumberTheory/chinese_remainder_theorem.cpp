@@ -27,14 +27,9 @@ inline pll reduce(ll x, ll y){
 }
 ll CRT(ll r1, ll r2, ll m1, ll m2){
 	ll d = gcd(m1, m2);
-	if(r1 % d != r2 % d) return -1;
+	if(abs(r2 - r1) % d) return -1;
 	m1 /= d, m2 /= d;
-
-	ll delta = (r2 - r1) / d;
-	delta = (delta % m2 + m2) % m2;
-
-	ll k = delta * inv(m1, m2) % m2;
-	return r1 + m1 * d * k;
+	return ((r2 - r1) / d * inv(m1, m2) % m2 + m2) % m2 * m1 * d + r1;
 }
 
 int32_t main(){
