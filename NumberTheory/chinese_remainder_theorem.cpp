@@ -31,10 +31,28 @@ ll CRT(ll r1, ll r2, ll m1, ll m2){
 	m1 /= d, m2 /= d;
 	return ((r2 - r1) / d * inv(m1, m2) % m2 + m2) % m2 * m1 * d + r1;
 }
+ll CRT(vector<pll> CongSys){
+	auto[r1, m1] = CongSys[0];
+	for(int i = 1; i < CongSys.size(); i ++){
+		auto[r2, m2] = CongSys[i];	
+		r1 = CRT(r1, r2, m1, m2);
+		if(r1 == -1) return -1;
+		m1 = m1 / gcd(m1, m2) * m2;
+	}
+	return r1;
+}
 
 int32_t main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
 	
+	// Congruences System
+	vector<pll> CongSys;
+	for(int i = 1; i <= k; i ++){
+		ll rem, mod; cin >> rem >> mod;
+		CongSys.emplace_back(rem, mod);
+	}
+	ll ans = CRT(CongSys);
+
 	return 0;
 }
 //! N.N
