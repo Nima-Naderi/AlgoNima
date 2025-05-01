@@ -62,7 +62,7 @@ ll CRD(ll u, ll par, ll val){
 }
 void DMS(ll u, ll h){
     plant(u, -1);
-    ll cent = CRD(u, -1, (sub[u] + 1) / 2);//attention
+    ll cent = CRD(u, -1, (sub[u] + 1) / 2); //attention
     Pre(cent, -1), Upd(cent, -1, 1);
     for(auto Pr : adj[cent]){
         ll v, w; tie(v, w) = Pr;

@@ -24,7 +24,7 @@ auto ask = [&] (ll n) -> ll {
 void solve(){
 	cout.flush(); cin >> n; cout.flush();
 	
-	cout.flush(); cout << ans << '\n'; cout.flush();
+	cout.flush(); cout << "! " << ans << '\n'; cout.flush();
 }
 int32_t main(){
 	//ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
