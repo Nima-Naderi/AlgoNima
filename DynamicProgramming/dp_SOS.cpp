@@ -17,6 +17,15 @@ int32_t main(){
             if(((mask >> j) & 1LL)) dp[mask ^ (1 << j)] += dp[mask];
         }
     }
+
+	//! O(3 ^ k) iteration on submasks
+	ll mask = 0b01010;
+	for(int sub = mask; ; sub = (sub - 1) & mask){
+		// Update
+		if(sub == 0) break;
+	}
+
+
 	//TODO: Sum ove subsets or supersets?
 	//TODO: 3^n implementation
 
