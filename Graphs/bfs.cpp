@@ -9,8 +9,7 @@ const ll MXN = 2e5 + 10;
 const ll INF = 1e9 + 10;
 ll n, m;
 ll dis[MXN];
-vector<pll> adj[MXN];
-priority_queue<pll, vector<pll>, greater<pll>> pq;
+vector<ll> adj[MXN];
 bool vis[MXN];
 inline ll BFS(ll src = 0, ll sink = 0){
 	if(src){
