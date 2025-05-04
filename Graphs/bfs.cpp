@@ -31,6 +31,7 @@ inline ll BFS(ll src = 0, ll sink = 0){
 			}
 		}
 	}
+    //TODO: implent the BFS with array, and L, R pointers
 	return -1;
 }
 int32_t main(){
@@ -38,8 +39,7 @@ int32_t main(){
 	cin >> n >> m;
 	for(int i = 1; i <= m; i ++){
 		ll u, v, w; cin >> u >> v;
-		adj[u].push_back(v);
-		adj[v].push_back(u);
+		adj[u].push_back(v), adj[v].push_back(u);
 	}
 	for(int i = 1; i <= n; i ++) cin >> dis[i];
 	assert(BFS() == -1);
