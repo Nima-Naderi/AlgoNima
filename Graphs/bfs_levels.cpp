@@ -10,9 +10,10 @@ const ll INF = 1e9 + 10;
 ll n, m;
 ll dis[MXN];
 vector<pll> adj[MXN];
-vector<ll> lvl[MXN];
+vector<ll> lvl[MXN]; // fact: distance <= n
 bool vis[MXN];
 vector<ll> BFS_Sources;
+// warning: to clear everything for new queries
 inline ll BFS01(ll src = 0, ll sink = 0){
     for(int i = 1; i <= n; i ++) dis[i] = INF;
 	if(src){
