@@ -14,7 +14,7 @@ vector<ll> lvl[MXN]; // fact: distance <= n
 bool vis[MXN];
 vector<ll> BFS_Sources;
 // warning: to clear everything for new queries
-inline ll BFS01(ll src = 0, ll sink = 0){
+inline ll BFS_Levels(ll src = 0, ll sink = 0){
     for(int i = 1; i <= n; i ++) dis[i] = INF;
 	if(src){
 		lvl[dis[src] = 0].push_back(src);
