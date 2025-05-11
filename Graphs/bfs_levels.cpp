@@ -43,7 +43,7 @@ int32_t main(){
 		adj[u].emplace_back(v, w), adj[v].emplace_back(u, w);
 	}
 	ll k, x; cin >> k; while(k --) { cin >> x, BFS_Sources.push_back(x); }
-	assert(BFS01() == -1);
+	assert(BFS_Levels() == -1);
 	for(int i = 1; i <= n; i ++) cout << dis[i] << ' ';
 	return 0;
 }
