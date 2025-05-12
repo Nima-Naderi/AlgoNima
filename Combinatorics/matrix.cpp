@@ -85,6 +85,7 @@ ll Fib(ll t){
     M = (C * M);
     return M.M[0][0];
 }
+//TODO: add gussain for matrix rank
 int main(){
 	ios::sync_with_stdio(0);cin.tie(0); cout.tie(0);
 	ll x; cin >> x; Matrix C = Matrix(3, 3), M0 = Matrix(3, 1);
