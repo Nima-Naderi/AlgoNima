@@ -23,6 +23,8 @@ void LPS(){
         //lps_t[i] = k; // or concatenate
 		if(k == n) k = lps[k];
 	}
+
+    // s = s + '#' + t;
 }
 
 int main(){
