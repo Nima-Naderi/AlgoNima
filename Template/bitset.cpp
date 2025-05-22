@@ -23,10 +23,11 @@ int32_t main(){
 	cout << '\n';
 	
 
-	bs.set(); //set all to 1
-	bs.reset(); //reset all to 0
+	bs.set(); //set all to 'true'
+	bs.reset(); //reset all to 'false'
 	bs.flip(); //toggles all
 
+	cout << bs.all() << ' ' << bs.any() << ' ' << bs.none() << ' ' << bs.count() << '\n';
 
 	return 0;
 }
