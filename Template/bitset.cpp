@@ -22,9 +22,10 @@ int32_t main(){
 	}
 	cout << '\n';
 	
-	
+
 	bs.set(); //set all to 1
 	bs.reset(); //reset all to 0
+	bs.flip(); //toggles all
 
 
 	return 0;
