@@ -20,7 +20,7 @@ inline ll BFS(ll src = 0, ll sink = 0){
 		for(auto u : BFS_Sources) dis[u] = 0, Qq[R ++] = u;
 	}
 	while(L != R){
-		ll u = Q[L ++];
+		ll u = Qq[L ++];
 		if(u == sink) return dis[u];
 		for(auto v : adj[u]){
 			if(dis[v] == INF) dis[v] = dis[u] + 1, Qq[R ++] = v;
