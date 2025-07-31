@@ -6,7 +6,7 @@ typedef long long ll;
 typedef pair<ll, ll> pll;
 const ll MXN = 2e5 + 10;
 const ll Mod = 998244353;
-
+ll n, ans;
 ll Ask(ll n){
 	cout.flush();
 	cout << "? " << n << '\n';
