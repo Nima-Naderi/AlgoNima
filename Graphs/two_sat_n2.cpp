@@ -22,7 +22,7 @@ struct TwoSat {
 		in[v][u] = 1, out[u][v] = 1;
 	}
 	inline void RmvEdge(ll u, ll v){
-		in[v][u] = 0, out[u][v] =0;
+		in[v][u] = 0, out[u][v] = 0;
 	}
 	inline void Add(ll u, ll v){
 		AddEdge(v ^ 1, u), AddEdge(u ^ 1, v);
@@ -72,13 +72,13 @@ struct TwoSat {
 };
 
 void add1(ll x, TwoSat &G){
-	for(auto [i , j] : vec[x]) G.add(i * 2 + 1, j * 2 + 1);
+	for(auto [i , j] : vec[x]) G.Add(i * 2 + 1, j * 2 + 1);
 }
 void add2(ll x, TwoSat &G){
-	for(auto [i , j] : vec[x]) G.add(i * 2, j * 2);
+	for(auto [i , j] : vec[x]) G.Add(i * 2, j * 2);
 }
 void rm1(ll x, TwoSat &G){
-	for(auto [i , j] : vec[x]) G.rm(i * 2 + 1, j * 2 + 1);
+	for(auto [i , j] : vec[x]) G.Rmv(i * 2 + 1, j * 2 + 1);
 }
 
 int32_t main(){
