@@ -13,7 +13,7 @@
 
 > **Master the art of algorithms!** 🎯 A curated collection of battle-tested algorithms and data structures, designed for competitive programming enthusiasts, computer science students, and anyone passionate about algorithmic problem-solving.
 
-**Created with ❤️ by [Nima Naderi](https://github.com/nimanaderi)**
+**Created with ❤️ by [Nima Naderi](https://github.com/Nima-Nadeir)**
 
 ---
 
@@ -62,7 +62,7 @@ Comprehensive testing tools including generators, naive solutions, and test scri
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/nimanaderi/Algonima.git
+   git clone https://github.com/Nima-Nadeir/Algonima.git
    cd Algonima
    ```
 
@@ -110,10 +110,10 @@ We welcome contributions from the community! Here's how you can help:
 
 ## 📊 Project Stats
 
-![GitHub stars](https://img.shields.io/github/stars/nimanaderi/Algonima?style=social)
-![GitHub forks](https://img.shields.io/github/forks/nimanaderi/Algonima?style=social)
-![GitHub issues](https://img.shields.io/github/issues/nimanaderi/Algonima)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/nimanaderi/Algonima)
+![GitHub stars](https://img.shields.io/github/stars/Nima-Nadeir/Algonima?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Nima-Nadeir/Algonima?style=social)
+![GitHub issues](https://img.shields.io/github/issues/Nima-Nadeir/Algonima)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Nima-Nadeir/Algonima)
 
 ## 📄 License
 
@@ -131,7 +131,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   
 **⭐ Star this repository if you found it helpful!**
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nimanaderi/Algonima)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/nimanaderi)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nima-Nadeir/Algonima)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nima-naderi04/)
+[![Codeforces](https://img.shields.io/badge/Codeforces-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/N.N_2004)
 
 </div>
