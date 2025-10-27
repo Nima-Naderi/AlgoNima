@@ -1,7 +1,7 @@
 <div align="center">
-  <img src="logo.png" alt="Algonima Logo" width="200"/>
+  <img src="logo.png" alt="AlgoNima Logo" width="200"/>
   
-  # 🚀 Algonima
+  # 🚀 AlgoNima
   
   ### A Comprehensive Algorithm & Data Structure Library
   
@@ -62,8 +62,8 @@ Comprehensive testing tools including generators, naive solutions, and test scri
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Nima-Nadeir/Algonima.git
-   cd Algonima
+   git clone https://github.com/Nima-Nadeir/AlgoNima.git
+   cd AlgoNima
    ```
 
 2. **Navigate to your desired algorithm:**
@@ -110,10 +110,10 @@ We welcome contributions from the community! Here's how you can help:
 
 ## 📊 Project Stats
 
-![GitHub stars](https://img.shields.io/github/stars/Nima-Nadeir/Algonima?style=social)
-![GitHub forks](https://img.shields.io/github/forks/Nima-Nadeir/Algonima?style=social)
-![GitHub issues](https://img.shields.io/github/issues/Nima-Nadeir/Algonima)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/Nima-Nadeir/Algonima)
+![GitHub stars](https://img.shields.io/github/stars/Nima-Nadeir/AlgoNima?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Nima-Nadeir/AlgoNima?style=social)
+![GitHub issues](https://img.shields.io/github/issues/Nima-Nadeir/AlgoNima)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/Nima-Nadeir/AlgoNima)
 
 ## 📄 License
 
@@ -131,7 +131,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
   
 **⭐ Star this repository if you found it helpful!**
 
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nima-Nadeir/Algonima)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nima-Nadeir/AlgoNima)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nima-naderi04/)
 [![Codeforces](https://img.shields.io/badge/Codeforces-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white)](https://codeforces.com/profile/N.N_2004)
 
