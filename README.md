@@ -56,7 +56,7 @@ Comprehensive testing tools including generators, naive solutions, and test scri
 ### Prerequisites
 - C++17 or later
 - GCC/Clang compiler
-- Git
+- Git (or just copy the code to your IDE)
 
 ### Installation
 
@@ -122,8 +122,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - Thanks to the competitive programming community for inspiration
-- Special thanks to all contributors who help make this project better
 - Built with ❤️ for the open source community
+- I want to thank me for believing in me, I wanna thank me for being me at all times, Nima you a bad mf.
 
 ---
 
